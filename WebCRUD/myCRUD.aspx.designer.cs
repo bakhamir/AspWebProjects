@@ -7,11 +7,11 @@
 // </автоматически создаваемое>
 //------------------------------------------------------------------------------
 
-namespace YourNamespace
+namespace WebFormsCRUD
 {
 
 
-    public partial class Table
+    public partial class MyCRUD
     {
 
         /// <summary>
@@ -24,156 +24,120 @@ namespace YourNamespace
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// lblData1 элемент управления.
+        /// Panel1 элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblData1;
+        protected global::System.Web.UI.WebControls.Panel Panel1;
 
         /// <summary>
-        /// txtData1 элемент управления.
+        /// Panel2 элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtData1;
+        protected global::System.Web.UI.WebControls.Panel Panel2;
 
         /// <summary>
-        /// lblData2 элемент управления.
+        /// tbSearch элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblData2;
+        protected global::System.Web.UI.WebControls.TextBox tbSearch;
 
         /// <summary>
-        /// ddlData2 элемент управления.
+        /// btSearch элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlData2;
+        protected global::System.Web.UI.WebControls.Button btSearch;
 
         /// <summary>
-        /// lblNavigation1 элемент управления.
+        /// Panel3 элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNavigation1;
+        protected global::System.Web.UI.WebControls.Panel Panel3;
 
         /// <summary>
-        /// hlNavigation1 элемент управления.
+        /// tbName элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlNavigation1;
+        protected global::System.Web.UI.WebControls.TextBox tbName;
 
         /// <summary>
-        /// lblNavigation2 элемент управления.
+        /// btAdd элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNavigation2;
+        protected global::System.Web.UI.WebControls.Button btAdd;
 
         /// <summary>
-        /// hlNavigation2 элемент управления.
+        /// btEdit элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlNavigation2;
+        protected global::System.Web.UI.WebControls.Button btEdit;
 
         /// <summary>
-        /// lblValidator1 элемент управления.
+        /// btDelete элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblValidator1;
+        protected global::System.Web.UI.WebControls.Button btDelete;
 
         /// <summary>
-        /// revValidator1 элемент управления.
+        /// hfId элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revValidator1;
+        protected global::System.Web.UI.WebControls.HiddenField hfId;
 
         /// <summary>
-        /// lblValidator2 элемент управления.
+        /// Panel4 элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblValidator2;
+        protected global::System.Web.UI.WebControls.Panel Panel4;
 
         /// <summary>
-        /// rfvValidator2 элемент управления.
+        /// cbReportType элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvValidator2;
+        protected global::System.Web.UI.WebControls.DropDownList cbReportType;
 
         /// <summary>
-        /// lblHtml1 элемент управления.
+        /// gvCity элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHtml1;
-
-        /// <summary>
-        /// txtHtml1 элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtHtml1;
-
-        /// <summary>
-        /// lblHtml2 элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHtml2;
-
-        /// <summary>
-        /// txtHtml2 элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtHtml2;
-
-        /// <summary>
-        /// htmlTable элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Table htmlTable;
+        protected global::System.Web.UI.WebControls.GridView gvCity;
     }
 }

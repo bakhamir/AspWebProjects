@@ -7,40 +7,86 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using System.Xml.Linq;
 using WebCRUD.Model;
 
-namespace WebCRUD
+namespace WebFormsCRUD
 {
-    public partial class myCRUD : System.Web.UI.Page
+    public partial class MyCRUD : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Заполнение HtmlTable данными
-            FillTable();
+            if (Page.IsPostBack)
+                return;
+            gvCity.DataSource = getData();
+            gvCity.DataBind();
         }
 
-        private void FillTable()
+        protected void btSearch_Click(object sender, EventArgs e)
         {
-            for (int i = 1; i <= 31; i++)
+            gvCity.DataSource = getData();
+            gvCity.DataBind();
+        }
+
+        List<City> getData()
+        {
+            using (SqlConnection db = new SqlConnection(ConfigurationManager.AppSettings["conStr"]))
             {
-                HtmlTableRow row = new HtmlTableRow();
-                HtmlTableCell cell1 = new HtmlTableCell();
-                HtmlTableCell cell2 = new HtmlTableCell();
-                HtmlTableCell cell3 = new HtmlTableCell();
-
-                cell1.InnerText = i.ToString();
-                cell2.InnerText = "январь";
-                cell3.InnerText = "2023";
-
-                row.Cells.Add(cell1);
-                row.Cells.Add(cell2);
-                row.Cells.Add(cell3);
-
-                htmlTable.Rows.Add(row);
+                return db.Query<City>("pCity;6", new { name = tbSearch.Text }, commandType: CommandType.StoredProcedure).ToList();
             }
+        }
+
+        protected void btAdd_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection db = new SqlConnection(ConfigurationManager.AppSettings["conStr"]))
+            {
+                var result = db.ExecuteScalar<string>("pCity;3", new { name = tbName.Text }, commandType: CommandType.StoredProcedure);
+                if (result == "ok")
+                {
+                    gvCity.DataSource = getData();
+                    gvCity.DataBind();
+                }
+            }
+        }
+
+        protected void btEdit_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection db = new SqlConnection(ConfigurationManager.AppSettings["conStr"]))
+            {
+                var result = db.ExecuteScalar<string>("pCity;4", new { id = hfId.Value, name = tbName.Text }, commandType: CommandType.StoredProcedure);
+                if (result == "ok")
+                {
+                    gvCity.DataSource = getData();
+                    gvCity.DataBind();
+                }
+            }
+        }
+
+        protected void gvCity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tbName.Text = gvCity.DataKeys[gvCity.SelectedIndex].Values[1].ToString();
+            hfId.Value = gvCity.DataKeys[gvCity.SelectedIndex].Values[0].ToString();
+
+        }
+
+        protected void btDelete_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection db = new SqlConnection(ConfigurationManager.AppSettings["conStr"]))
+            {
+                var result = db.ExecuteScalar<int>("pCity;5", new { id = hfId.Value }, commandType: CommandType.StoredProcedure);
+                if (result > 0)
+                {
+                    gvCity.DataSource = getData();
+                    gvCity.DataBind();
+                }
+                tbName.Text = "";
+            }
+        }
+
+        protected void cbReportType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbReportType.SelectedIndex == 0)
+                Response.Redirect("~/Report.aspx?param1=excel");
         }
     }
 }

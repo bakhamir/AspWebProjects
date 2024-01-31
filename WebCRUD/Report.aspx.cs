@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -38,6 +39,36 @@ namespace WebCRUD
                     }
                 }
             }
+            if (Request.QueryString["param1"] == "csv")
+            {
+                Response.Write(Request.QueryString["param1"].ToString());
+                Response.Clear();
+                Response.ContentType = "text/csv";
+                Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}", "report.csv"));
+
+                using (var writer = new StreamWriter(Response.OutputStream, Encoding.UTF8))
+                {
+                    var dataTable = getData();
+
+                    foreach (DataColumn column in dataTable.Columns)
+                    {
+                        writer.Write($"{column.ColumnName},");
+                    }
+                    writer.WriteLine(); 
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        for (int i = 0; i < dataTable.Columns.Count; i++)
+                        {
+                            writer.Write($"{row[i]},");
+                        }
+                        writer.WriteLine(); 
+                    }
+
+                    Response.End();
+                }
+            }
+
         }
 
         protected DataTable getData()
